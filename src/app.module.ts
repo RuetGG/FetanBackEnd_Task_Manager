@@ -1,0 +1,24 @@
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service'; 
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { TaskModule } from './task/task.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { ConfigModule } from '@nestjs/config';
+import { JwtStrategy } from './auth/strategy';
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal:true
+    }),
+    AuthModule,
+    UserModule,
+    TaskModule,
+    PrismaModule
+  ],
+  controllers: [AppController],
+  providers: [AppService, JwtStrategy],
+})
+export class AppModule {}
