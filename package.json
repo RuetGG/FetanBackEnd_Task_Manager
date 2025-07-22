@@ -6,12 +6,16 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "start": "node dist/main.js",
-    "start:dev": "nest start --watch",
-    "build": "nest build"
-  },
+  "test": "jest",
+  "test:watch": "jest --watch",
+  "start": "prisma migrate deploy && node dist/main.js",
+  "start:dev": "nest start --watch",
+  "build": "prisma generate && nest build",
+  "prisma:generate": "prisma generate",
+  "prisma:migrate": "prisma migrate deploy",
+  "prisma:studio": "prisma studio"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",
